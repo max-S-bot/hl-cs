@@ -34,8 +34,9 @@ elif [ $action -eq 4 ]; then
     echo "repository name: "
     read repo_name
     git clone "https://github.com/$user_name/$repo_name.git"
-    rm -rf "$submodule/.git"
     git rm -r --cached $repo_name
+    rm -rf "$submodule/.git"
+    #rm -rf ".git/modules/$submodule"
     git add $repo_name
 else 
     echo "action not found"
