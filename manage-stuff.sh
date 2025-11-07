@@ -34,33 +34,9 @@ elif [ $action -eq 4 ]; then
     echo "repository name: "
     read repo_name
     git clone "https://github.com/$user_name/$repo_name.git" temp-repo
-    mkdir repo_name
-    cp -r temp-repo/* repo_name/
+    mkdir "$repo_name"
+    cp -r temp-repo/* "$repo_name"/
     rm -rf temp-repo
-    
-    submodule="$repo_name"
-    # Remove .git directory inside submodule
-    if [ -d "$submodule/.git" ]; then
-        echo "Removing $submodule/.git directory..."
-        rm -rf "$submodule/.git"
-    fi
-    
-    # Remove from .git/modules if it exists
-    if [ -d ".git/modules/$submodule" ]; then
-        echo "Removing .git/modules/$submodule..."
-        rm -rf ".git/modules/$submodule"
-    fi
-    
-    # Add back as regular files
-    if [ -d "$submodule" ]; then
-        echo "Adding $submodule as regular directory..."
-        git add "$submodule"
-        echo "✓ Converted $submodule"
-    else
-        echo "⚠ Warning: $submodule directory doesn't exist"
-    fi
-
-
 else 
     echo "action not found"
 fi
