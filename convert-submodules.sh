@@ -22,22 +22,32 @@ fi
 
 # Process each submodule
 for submodule in $submodules; do
-    echo "Converting $submodule..."
+    echo ""
+    echo "==== Converting $submodule ===="
     
     # Remove from Git's index
+    echo "Removing $submodule from Git index..."
     git rm --cached "$submodule"
+    
+    # Remove .git directory inside submodule
+    if [ -d "$submodule/.git" ]; then
+        echo "Removing $submodule/.git directory..."
+        rm -rf "$submodule/.git"
+    fi
     
     # Remove from .git/modules if it exists
     if [ -d ".git/modules/$submodule" ]; then
+        echo "Removing .git/modules/$submodule..."
         rm -rf ".git/modules/$submodule"
     fi
     
-    # Add back as regular files (if directory exists and has content)
+    # Add back as regular files
     if [ -d "$submodule" ]; then
+        echo "Adding $submodule as regular directory..."
         git add "$submodule"
         echo "✓ Converted $submodule"
     else
-        echo "⚠ Warning: $submodule directory doesn't exist, skipped git add"
+        echo "⚠ Warning: $submodule directory doesn't exist"
     fi
 done
 
