@@ -7,7 +7,7 @@
 
 // https://editor.p5js.org/codingtrain/sketches/xTjmYXU3q
 document.getElementById("do stuff").addEventListener("click", () => {
-    options[document.getElementById("options").value]();
+  options[document.getElementById("options").value]();
 })
 
 let angle = 0;
@@ -45,13 +45,13 @@ function branch(len) {
 }
 
 const options = {
-    "colorize": () => {
-        color = [Math.random()*256, Math.random()*256, Math.random()*256];
-    },
-    "go faster": () => {
-        dif += .01;
-    },
-    "go slower": () => {
-        dif -= .01;
-    }
+  "colorize": () => {
+    color = [Math.random()*256, Math.random()*256, Math.random()*256];
+  },
+  "go faster": () => {
+    dif += .01;
+  },
+  "go slower": () => {
+    dif -= .01;
+  }
 }
