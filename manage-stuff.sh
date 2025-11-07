@@ -37,6 +37,7 @@ elif [ $action -eq 4 ]; then
     read repo_name
     git clone "https://github.com/$user_name/$repo_name.git"
     git rm --cached $repo_name
+    git add $repo_name
 else 
     echo "action not found"
 fi
