@@ -13,8 +13,6 @@ echo "3: $close_branch"
 echo "4: $import_repo"
 read action
 
-
-
 if [ $action -eq 1 ]; then
     echo "name the new project: "
     read name
@@ -36,7 +34,8 @@ elif [ $action -eq 4 ]; then
     echo "repository name: "
     read repo_name
     git clone "https://github.com/$user_name/$repo_name.git"
-    git rm --cached $repo_name
+    rm -rf "$submodule/.git"
+    git rm -r --cached $repo_name
     git add $repo_name
 else 
     echo "action not found"
