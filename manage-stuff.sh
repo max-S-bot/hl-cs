@@ -37,7 +37,7 @@ elif [ $action -eq 4 ]; then
     git rm -r --cached $repo_name
     rm -rf "$submodule/.git"
     #rm -rf ".git/modules/$submodule"
-    git add $repo_name
+    git add $repo_name 
 else 
     echo "action not found"
 fi
