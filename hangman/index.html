@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hangman</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+  </head>
+ <body>
+
+<h1>HANGMAN</h1>
+
+<!-- select box for difficulty? --> 
+
+<button id="easy">Easy</button>
+<button id="medium">Medium</button>
+<button id="hard">Hard</button>
+
+<!-- try the more advanced button system from classroom instead of this! -->
+<select id="guessedLetter">
+  <option value="a">a</option>
+  <option value="b">b</option>
+  <option value="c">c</option>
+  <option value="d">d</option>
+  <option value="e">e</option>
+  <option value="f">f</option>
+  <option value="g">g</option>
+  <option value="h">h</option>
+  <option value="i">i</option>
+  <option value="j">j</option>
+  <option value="k">k</option>
+  <option value="l">l</option>
+  <option value="m">m</option>
+  <option value="n">n</option>
+  <option value="o">o</option>
+  <option value="p">p</option>
+  <option value="q">q</option>
+  <option value="r">r</option>
+  <option value="s">s</option>
+  <option value="t">t</option>
+  <option value="u">u</option>
+  <option value="v">v</option>
+  <option value="w">w</option>
+  <option value="x">x</option>
+  <option value="y">y</option>
+  <option value="z">z</option>
+  <!-- ..... -->
+</select>
+
+<button id="guessLetter">Guess Letter</button>
+
+<br> </br>
+
+<div id="word"></div>
+
+<h3>Guessed Letters</h3>
+
+<div id="guessedLetters"></div>
+
+<h4>Guesses Remaining...</h4>
+<div id="numGuesses"></div>
+<br> </br>
+<img id="img" src="img/hangman7.jpg">
+
+<script src="script.js"></script>
+
+</body>
+</html>
