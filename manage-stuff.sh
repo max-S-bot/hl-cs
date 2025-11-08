@@ -23,7 +23,7 @@ if [ $action -eq 1 -o $action -eq 2 ]; then
     echo "name the new project: "
     read name
     git checkout -b "$name"
-    cp -R js-project-template "$name"
+    cp -r js-project-template "$name"
     sed -i "${ind}a\    <br><br>" index.html
     temp=$((ind+1))
     sed -i "${temp}a\    <a href=\"$name/index.html\">$name</a>" index.html
@@ -32,7 +32,8 @@ if [ $action -eq 1 -o $action -eq 2 ]; then
     if [ $action -eq 2 ]; then
         sed -i "$p5_script_tag" "$name/index.html"
     fi
-    git commit "new project: $name"
+    git add .
+    git commit -m "new project: $name"
 elif [ $action -eq 3 ]; then 
     git checkout main
     echo "moved to main"
