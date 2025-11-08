@@ -25,7 +25,7 @@ if [ $action -eq 1 -o $action -eq 2 ]; then
     cp -R js-project-template "$name"
     sed -i "${ind}a\    <br><br>" index.html
     temp=$((ind+1))
-    sed -i "${temp}a\    <a href=\"$name/index.html\">$test</a>" index.html
+    sed -i "${temp}a\    <a href=\"$name/index.html\">$name</a>" index.html
     temp=$((ind+2))
     sed -i "5c\ind=$temp" manage-stuff.sh
     if [ $action -eq 2 ]; then
