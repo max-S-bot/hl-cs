@@ -22,6 +22,7 @@ read action
 if [ $action -eq 1 -o $action -eq 2 ]; then
     echo "name the new project: "
     read name
+    git checkout -b "$name"
     cp -R js-project-template "$name"
     sed -i "${ind}a\    <br><br>" index.html
     temp=$((ind+1))
@@ -31,7 +32,6 @@ if [ $action -eq 1 -o $action -eq 2 ]; then
     if [ $action -eq 2 ]; then
         sed -i "$p5_script_tag" "$name/index.html"
     fi
-    git checkout -b "$name"
 elif [ $action -eq 3 ]; then 
     git checkout main
     echo "moved to main"
