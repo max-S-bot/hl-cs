@@ -1,10 +1,13 @@
 #!/bin/bash
 
-# './new-project.sh' in terminal to run
+# './new-project.sh' in terminal to run\
+
 js_project="new js project"
 p5js_project="new p5 js project"
 close_branch="close a branch"
 import_repo="add a project (in a different repository) to this repository"
+
+p5_script_tag='6a\        <script src="https://cdn.jsdelivr.net/npm/p5@1.11.5/lib/p5.js"></script>'
 
 echo "choose an action: "
 echo "1: $js_project"
@@ -13,13 +16,14 @@ echo "3: $close_branch"
 echo "4: $import_repo"
 read action
 
-if [ $action -eq 1 ]; then
+if [ $action -eq 1 -o $action -eq 2 ]; then
     echo "name the new project: "
     read name
     cp -R js-project-template "$name"
     git checkout -b "$name"
-elif [ $action -eq 2 ]; then
-    echo "action needs to be implemented"
+    if [ $action -eq 2 ]; then
+        sed -i "$p5_script_tag" "$name/index.html"
+    fi
 elif [ $action -eq 3 ]; then 
     git checkout main
     echo "moved to main"
@@ -40,5 +44,3 @@ elif [ $action -eq 4 ]; then
 else 
     echo "action not found"
 fi
-
-
