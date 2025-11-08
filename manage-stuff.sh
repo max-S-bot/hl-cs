@@ -2,7 +2,7 @@
 
 # './new-project.sh' in terminal to run\
 
-ind=27
+ind=25
 js_project="new js project"
 p5js_project="new p5 js project"
 close_branch="close a branch"
