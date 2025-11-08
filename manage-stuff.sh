@@ -32,6 +32,7 @@ if [ $action -eq 1 -o $action -eq 2 ]; then
     if [ $action -eq 2 ]; then
         sed -i "$p5_script_tag" "$name/index.html"
     fi
+    git commit "new project: $name"
 elif [ $action -eq 3 ]; then 
     git checkout main
     echo "moved to main"
