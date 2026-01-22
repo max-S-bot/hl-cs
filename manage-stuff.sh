@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# './new-project.sh' in terminal to run\
-
 ind=27
 js_project="new js project"
 p5js_project="new p5 js project"
@@ -25,7 +23,7 @@ if [ $action -eq 1 -o $action -eq 2 ]; then
     temp=$((ind+1))
     sed -i "${temp}a\    <a href=\"$name/index.html\">$name</a>" index.html
     temp=$((ind+2))
-    sed -i "5c\ind=$temp" manage-stuff.sh
+    sed -i "3c\ind=$temp" manage-stuff.sh
     if [ $action -eq 2 ]; then
         sed -i "$p5_script_tag" "$name/index.html"
     fi
