@@ -1,19 +1,31 @@
 import random
+import json
 
 NUM_TRIES = 7
 A = ord('a')
-WORDS = ['apple', 'orange', 'stuff', 'foo', 'bar']
+WORDS = None
+
+with open('pyman/dictionary.json', 'r') as file:
+    WORDS = json.load(file)
 
 class game:
     def __init__(self):
-        self.num_tries = NUM_TRIES
-        self.word = WORDS[int(len(WORDS) * random.random())] #get_word() # fix
-        self.n = len(self.word)
-        self.guesses = []
-        self.state = list(map(lambda ch: '_', list(self.word)))
         self.remaining_letters = []
         for i in range(26):
             self.remaining_letters.append(chr(A+i))
+        self.word = None
+        while True:
+            self.word = WORDS[int(len(WORDS) * random.random())]
+            bad_chars = False
+            for ch in self.word:
+                if ch not in self.remaining_letters:
+                    bad_chars = True
+                    break
+            if not bad_chars: break
+        self.num_tries = min(max(5, len(self.word) - 4), 8)
+        self.n = len(self.word)
+        self.guesses = []
+        self.state = list(map(lambda ch: '_', list(self.word)))
 
     def play(self):
         while self.num_tries > 0 and '_' in self.state:
