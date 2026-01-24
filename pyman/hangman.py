@@ -1,3 +1,5 @@
+#!/bin/python3
+
 import random
 import json
 
@@ -13,15 +15,7 @@ class game:
         self.remaining_letters = []
         for i in range(26):
             self.remaining_letters.append(chr(A+i))
-        self.word = None
-        while True:
-            self.word = WORDS[int(len(WORDS) * random.random())]
-            bad_chars = False
-            for ch in self.word:
-                if ch not in self.remaining_letters:
-                    bad_chars = True
-                    break
-            if not bad_chars: break
+        self.word = WORDS[int(len(WORDS) * random.random())]
         self.num_tries = min(max(5, len(self.word) - 4), 8)
         self.n = len(self.word)
         self.guesses = []
