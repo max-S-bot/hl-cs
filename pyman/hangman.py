@@ -38,11 +38,10 @@ class game:
         print('Guesses so far: ' + str(self.guesses))
         print('Remaining letters: ' + str(self.remaining_letters))
         guess = input('Make a guess: ').lower()
-        print()
-        if guess not in self.remaining_letters:
+        while guess not in self.remaining_letters:
             print('Not a valid guess. Try again!')
-            self.do_turn()
-            return
+            guess = input('Make a guess: ').lower()
+        print()
         matched = False
         for i in range(self.n):
             if guess == self.word[i]:
