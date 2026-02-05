@@ -3,7 +3,7 @@
 js_project="new js project"
 p5js_project="new p5 js project"
 close_branch="close a branch"
-import_repo="add a project (in a different repository) to this repository"
+import_repo="add a project (in a different repository) to this repository (or clone starter code)"
 
 p5_script_tag='6a\        <script src="https://cdn.jsdelivr.net/npm/p5@1.11.5/lib/p5.js"></script>'
 
@@ -43,6 +43,8 @@ elif [ $action -eq 4 ]; then
     mkdir "$repo_name"
     cp -r temp-repo/* "$repo_name"/
     rm -rf temp-repo
+    sed -i "$(($(cat index.html | wc -l) - 2))a\    <br><br>" index.html
+    sed -i "$(($(cat index.html | wc -l) - 2))a\    <a href=\"$repo_name/index.html\">$repo_name</a>" index.html
 else 
     echo "action not found"
 fi
