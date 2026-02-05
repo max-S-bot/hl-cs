@@ -64,11 +64,18 @@ function testAll() {
 
 
 //HL Only: recursive binarySearch
-function recursiveBinarySearch() {
-
+// eslint-disable-next-line
+function binarySearch(min = 0, max = 100) {
+	const guess = Math.floor(min + (max - min) / 2);
+	if (guess < NUM)
+		return binarySearch(guess, max);
+	else if (guess > NUM)
+		return binarySearch(min, guess);
+	else return guess;
 }
 
 //HL Only: recursive mergeSort()
+// eslint-disable-next-line
 function mergeSort(arr) {
 	if (arr.length <= 1) 
 		return [...arr];
