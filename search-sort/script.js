@@ -69,6 +69,22 @@ function recursiveBinarySearch() {
 }
 
 //HL Only: recursive mergeSort()
-function recursiveMergeSort(arr) {
-	
+function mergeSort(arr) {
+	if (arr.length <= 1) 
+		return [...arr];
+	else if (arr.length == 2)
+		return [Math.min(...arr), Math.max(...arr)];
+	else 
+		return merge(mergeSort(arr.slice(0, arr.length/2)), mergeSort(arr.slice(arr.length/2)));
+}
+
+function merge(arr, other) {
+	const k = arr.length, m = other.length;
+	const res = [];
+	for (let i = 0, j = 0; i < k || j < m;) 
+		if (i == k || arr[i] > other[j])
+			res.push(other[j++]);
+		else
+			res.push(arr[i++]);
+	return res;
 }
