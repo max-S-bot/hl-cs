@@ -18,8 +18,8 @@ if [ $action -eq 1 -o $action -eq 2 ]; then
     echo "name the new project: "
     read name
     cp -r js-project-template "$name"
-    sed -i "$(($(cat index.html | wc -l) - 2))a\    <br><br>" index.html
-    sed -i "$(($(cat index.html | wc -l) - 2))a\    <a href=\"$name/index.html\">$name</a>" index.html
+    sed -i "$(($(cat index.html | wc -l) - 1))a\    <br><br>" index.html
+    sed -i "$(($(cat index.html | wc -l) - 1))a\    <a href=\"$name/index.html\">$name</a>" index.html
     if [ $action -eq 2 ]; then
         sed -i "$p5_script_tag" "$name/index.html"
     fi
@@ -43,8 +43,8 @@ elif [ $action -eq 4 ]; then
     mkdir "$repo_name"
     cp -r temp-repo/* "$repo_name"/
     rm -rf temp-repo
-    sed -i "$(($(cat index.html | wc -l) - 2))a\    <br><br>" index.html
-    sed -i "$(($(cat index.html | wc -l) - 2))a\    <a href=\"$repo_name/index.html\">$repo_name</a>" index.html
+    sed -i "$(($(cat index.html | wc -l) - 1))a\    <br><br>" index.html
+    sed -i "$(($(cat index.html | wc -l) - 1))a\    <a href=\"$repo_name/index.html\">$repo_name</a>" index.html
 else 
     echo "action not found"
 fi
