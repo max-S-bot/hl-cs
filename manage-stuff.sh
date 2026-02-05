@@ -1,6 +1,5 @@
 #!/bin/bash
 
-ind=27
 js_project="new js project"
 p5js_project="new p5 js project"
 close_branch="close a branch"
@@ -19,11 +18,8 @@ if [ $action -eq 1 -o $action -eq 2 ]; then
     echo "name the new project: "
     read name
     cp -r js-project-template "$name"
-    sed -i "${ind}a\    <br><br>" index.html
-    temp=$((ind+1))
-    sed -i "${temp}a\    <a href=\"$name/index.html\">$name</a>" index.html
-    temp=$((ind+2))
-    sed -i "3c\ind=$temp" manage-stuff.sh
+    sed -i "$(($(cat index.html | wc -l) - 2))a\    <br><br>" index.html
+    sed -i "$(($(cat index.html | wc -l) - 2))a\    <a href=\"$name/index.html\">$name</a>" index.html
     if [ $action -eq 2 ]; then
         sed -i "$p5_script_tag" "$name/index.html"
     fi
