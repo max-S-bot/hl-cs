@@ -5,7 +5,10 @@ p5js_project="new p5 js project"
 close_branch="close a branch"
 import_repo="add a project (in a different repository) to this repository (or clone starter code)"
 
-git checkout main
+if [ "$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')" != "(main)" ]; then 
+    echo "must be in main (git checkout main)"
+    exit 1
+fi
 
 echo "choose an action: "
 echo "1: $js_project"
