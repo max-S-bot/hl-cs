@@ -3,8 +3,8 @@
 
 let H, W;
 const P = .5;
-const RES = 15;
-const DELAY = 300;
+const RES = 10;
+const DELAY = 100;
 
 const alive = [255, 255, 255];
 const dead = [0, 0, 0];
@@ -48,7 +48,12 @@ const button = (name, func) => {
     b.addEventListener('click', func);
     b.style = "margin: 10px"
     document.body.appendChild(b);
+    return b;
 }
+
+const restart = button('restart', doGrid);
+const pause = button('pause', () => interval = clearInterval(interval));
+const unpause = button('unpause', makeInterval);
 
 function setup() { // eslint-disable-line
     W = Math.floor(windowWidth / RES); // eslint-disable-line
@@ -56,17 +61,21 @@ function setup() { // eslint-disable-line
     createCanvas(RES*W, RES*H); // eslint-disable-line
     doGrid();
     makeInterval();
-    button('restart', doGrid);
-    button('pause', () => interval = clearInterval(interval));
-    button('unpause', makeInterval);
 }
 
-// works kind of approximately
-function mousePressed(event) { // eslint-disable-line
-    const i = Math.floor(event.y / RES);
-    const j = Math.floor(event.x / RES) - 1;
+function mousePressed() { // eslint-disable-line
+    const i = Math.floor(mouseY / RES); // eslint-disable-line
+    const j = Math.floor(mouseX / RES); // eslint-disable-line
     if (inRange(i, j))
         grid[i][j] = !grid[i][j];
     draw(drawCell);
 }
 
+function keyPressed(event) { // eslint-disable-line
+    const actions = { // this is what happens when switch statements have fallthrough
+        'r': () => restart.click(),
+        ' ': () => interval ? pause.click() : unpause.click()
+    }
+    if (event.key in actions)
+        actions[event.key]();
+}
