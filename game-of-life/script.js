@@ -3,7 +3,7 @@
 
 let H, W;
 const P = .5;
-const RES = 10;
+const RES = 15;
 const DELAY = 100;
 
 const alive = [255, 255, 255];
@@ -69,6 +69,10 @@ function mousePressed() { // eslint-disable-line
     if (inRange(i, j))
         grid[i][j] = !grid[i][j];
     draw(drawCell);
+}
+
+function mouseDragged() { // eslint-disable-line
+    mousePressed();
 }
 
 function keyPressed(event) { // eslint-disable-line
