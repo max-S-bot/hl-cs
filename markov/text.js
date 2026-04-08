@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 const text = `The Project Gutenberg eBook of The Platypus
     
 This eBook is for the use of anyone anywhere in the United States and

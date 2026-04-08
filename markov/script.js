@@ -1,4 +1,9 @@
+const textDiv = document.getElementById('text');
+const len = document.getElementById('numWords');
 
+document.getElementById('button')
+.addEventListener('click', () => 
+    textDiv.innerHTML = generator(parseInt(len.value)));
 
 const preprocess = str => 
     str.toLowerCase().replaceAll(/[^a-z0-9]/g, ' ').trim().split(/\s+/g);
@@ -23,10 +28,5 @@ const generate = (map, words) => len => {
     return output.join(' ');
 }
 
-const run = () => {
-    const words = preprocess(text); // eslint-disable-line
-    const generator = generate(mapRelations(words), words);
-    console.log(generator(50));
-}
-
-run();
+const words = preprocess(text); // eslint-disable-line
+const generator = generate(mapRelations(words), words);
